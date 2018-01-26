@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Environment;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.support.annotation.IntRange;
@@ -686,7 +687,7 @@ public class UserPreferences {
         String strDir = prefs.getString(PREF_DATA_FOLDER, null);
         if (strDir == null) {
             Log.d(TAG, "Using default data folder");
-            return context.getExternalFilesDir(type);
+            return Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PODCASTS);
         } else {
             File dataDir = new File(strDir);
             if (!dataDir.exists()) {
